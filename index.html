@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Fischvorbereitungstag</title>
+    <title>Meine Bildergalerie</title>
     <style>
         /* Stildefinitionen für die Bildergalerie */
         #gallery {
@@ -20,14 +20,39 @@
             border-radius: 5px;
             margin-bottom: 10px;
             object-fit: cover; /* behält das Original-Aspect-Ratio bei und füllt den Container aus */
+            cursor: pointer;
+        }
+
+        /* Stildefinitionen für das vergrößerte Bild */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Fischvorbereitungstag</h1>
+    <h1>Meine Bildergalerie</h1>
 
     <div id="gallery"></div>
+
+    <div id="overlay">
+        <img id="overlayImage" alt="Vergrößertes Bild">
+    </div>
 
     <script>
         // Liste der Bildernamen
@@ -60,14 +85,26 @@
 
         // Referenz zum Galerie-Div
         const galleryContainer = document.getElementById('gallery');
+        const overlay = document.getElementById('overlay');
+        const overlayImage = document.getElementById('overlayImage');
 
         // Bilder in die Galerie einfügen
         imageList.forEach(image => {
             const imgElement = document.createElement('img');
             imgElement.src = image;
             imgElement.alt = image;
+            imgElement.addEventListener('click', () => openOverlay(image));
             galleryContainer.appendChild(imgElement);
         });
+
+        // Funktion, um das vergrößerte Bild anzuzeigen
+        function openOverlay(image) {
+            overlayImage.src = image;
+            overlay.style.display = 'flex';
+        }
+
+        // Funktion, um das vergrößerte Bild zu schließen
+        overlay.addEventListener('click', () => overlay.style.display = 'none');
     </script>
 
 </body>
