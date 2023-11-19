@@ -61,7 +61,7 @@
     <div id="overlay">
         <div class="nav">
             <button id="prevBtn" onclick="changeImage(-1)">Vorheriges Bild</button>
-            <button id="nextBtn" onclick="changeImage(1)">Nächstes Bild</button>
+            <button id="nextBtn" onclick="changeImage(1, event)">Nächstes Bild</button>
         </div>
         <img id="overlayImage" alt="Vergrößertes Bild">
     </div>
@@ -123,7 +123,8 @@
         overlay.addEventListener('click', () => overlay.style.display = 'none');
 
         // Funktion zum Wechseln des Bildes
-        function changeImage(step) {
+        function changeImage(step, event) {
+            event.stopPropagation();
             currentIndex += step;
             if (currentIndex < 0) {
                 currentIndex = imageList.length - 1;
