@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Bildergalerie</title>
+    <style>
+        /* Stildefinitionen für die Bildergalerie */
+        #gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #gallery img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Meine Bildergalerie</h1>
+
+    <div id="gallery"></div>
+
+    <script>
+        // Liste der Bildernamen
+        const imageList = [
+            "IMG_9277.jpeg",
+            "IMG_9288.jpeg",
+            "IMG_9295.jpeg",
+            "IMG_9296.jpeg",
+            "IMG_9297.jpeg",
+            "IMG_9298.jpeg",
+            "IMG_9300.jpeg",
+            "IMG_9301.jpeg",
+            "IMG_9303.jpeg",
+            "IMG_9304.jpeg",
+            "IMG_9305.jpeg",
+            "IMG_9306.jpeg",
+            "IMG_9307.jpeg",
+            "IMG_9308.jpeg",
+            "IMG_9310.jpeg",
+            "IMG_9314.jpeg",
+            "IMG_9315.jpeg",
+            "IMG_9316.jpeg",
+            "IMG_9317.jpeg",
+            "IMG_9318.jpeg",
+            "IMG_9319.jpeg",
+            "IMG_9320.jpeg",
+            "IMG_9322.jpeg",
+            "IMG_9323.jpeg"
+        ];
+
+        // Referenz zum Galerie-Div
+        const galleryContainer = document.getElementById('gallery');
+
+        // Bilder in die Galerie einfügen
+        imageList.forEach(image => {
+            const imgElement = document.createElement('img');
+            imgElement.src = image;
+            imgElement.alt = image;
+            galleryContainer.appendChild(imgElement);
+        });
+    </script>
+
+</body>
+</html>
